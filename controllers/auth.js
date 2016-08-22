@@ -4,6 +4,7 @@ var passport = require('../config/ppConfig');
 
 var db = require('../models');
 
+////Routers
 router.get('/signup', function(req, res) {
   res.render('auth/signup');
 });
@@ -12,8 +13,10 @@ router.post('/signup', function(req, res){
   db.user.findOrCreate({
     defaults: {
       where:{email: req.body.email},
-      name: req.body.name,
-      password: req.body.password
+      defaults:{
+        name: req.body.name,
+        password: req.body.password
+     }
     }
   }).spread(function(user, created){
     if(created){
