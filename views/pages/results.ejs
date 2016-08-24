@@ -1,4 +1,12 @@
-<h2>Search an issue or politician:</h2>
+<div>
+  <h3>Recent News</h3>
+  <a href="<%=guardian.webUrl%>"> <%= guardian.webTitle %></a>
+  <br>
+  <a href="<%=nyTimes.web_url%>"> <%= nyTimes.headline.main %></a>
+</div>
+
+
+
 
 <form method="get" action="/pages/results">
   <div class="form-group">
@@ -6,5 +14,4 @@
     <input id="search" class="form-control" type="text" name="search">
   </div>
   <input type="submit" class="btn btn-primary">
-  
 </form>
