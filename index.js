@@ -6,7 +6,7 @@ var passport = require('./config/ppConfig');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 var request = require('request');
-var async = require('async');
+var async = require('async')
 var app = express();
 
 app.set('view engine', 'ejs');

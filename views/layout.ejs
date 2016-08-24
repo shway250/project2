@@ -10,7 +10,10 @@
   </head>
   <body>
     <div class="container">
-    <p><strong><%- JSON.stringify(currentUser)  %> </strong></p>
+    <!-- USERNAME BIDNESS -->
+    <% var userName = JSON.stringify(currentUser.name) %>
+    <% userName = userName.slice(1, userName.length-1); %>
+    <!-- END OD USERNAME BIDNESS -->
       <% if(alerts.error){%>
         <% alerts.error.forEach(function(msg){ %>
           <div class="alert alert-danger"><%= msg %></div>
@@ -18,19 +21,33 @@
       <%}%>
 
       <% if(alerts.success){%>
-        <% alerts.sucess.forEach(function(msg){ %>
+        <% alerts.success.forEach(function(msg){ %>
           <div class="alert alert-success"><%= msg %></div>
         <% }); %>
       <%}%>
 
       <!-- LAYOUT DESIGN -->
-      <h1>Civil Civics</h1>
-      <div class="container">
-        <a href="/pages/search">Home</a>
-        <a href="/pages/politicians">Politicians</a>
-        <a href="/pages/issues">Issues</a>
-        <a href="/pages/states">States</a>
+      <div class=".greyDiv">
+        <h1>Civil Civics</h1>
+        <div class="col-md-6">
+          <a href="/" class="btn btn-default">Search</a>
+        </div>
+        <div class="col-md-6">
+          <% if (!currentUser) { %>
+            <a href="/auth/signup" class="btn btn-info">Signup</a>
+            <a href="/auth/login" class="btn btn-info">Login</a>
+            <% } %>
+            <% if (currentUser) { %>
+            <a href="/auth/logout" class="btn btn-info">Logout</a>
+            <a href="/profile" class="btn btn-info"> 
+            <% if (currentUser) { %>
+          <strong><%- userName %> </strong>
+          <% } %>
+          's Profile</a>
+            <% } %>
+        </div>
       </div>
+      
       <%- body %>
     </div>
 
