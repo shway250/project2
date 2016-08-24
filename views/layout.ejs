@@ -10,9 +10,12 @@
   </head>
   <body>
     <div class="container">
+
     <!-- USERNAME BIDNESS -->
+    <% if (currentUser) { %>
     <% var userName = JSON.stringify(currentUser.name) %>
     <% userName = userName.slice(1, userName.length-1); %>
+    <%}%>
     <!-- END OD USERNAME BIDNESS -->
       <% if(alerts.error){%>
         <% alerts.error.forEach(function(msg){ %>
