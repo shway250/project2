@@ -1,14 +1,23 @@
 var express = require("express");
 var router = express.Router();
 var request = require('request');
+var session = require('express-session');
 var async = require('async');
 var db = require('../models');
-
-
 
 //Search and results Routes
 router.get("/results", function(req, res) {
   var searchTerm = req.query.search;
+
+  ///Logging search terms to individual profiles
+  if(req.user){
+    db.user.findById(req.user.dataValues.id).then(function(user){
+      user.createSearch({
+        searchTerm: searchTerm
+      }).then(function(search){
+      });
+    });
+  }
 
   ///////API REQUEST FUNCTIONS!!!
   function guardian(callback){
@@ -42,16 +51,8 @@ router.get("/results", function(req, res) {
   
   ////////////ASYNC
   async.series([guardian, nyTimes], function(err, results) {
-    console.log(results[0]);
     res.render('pages/results', {guardian: results[0], nyTimes: results[1]});
   });
 }); 
-
-
-
-router.get("/election", function(req, res){
-  ///Election 2016 page
-});
-
 
 module.exports = router;

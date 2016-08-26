@@ -1,0 +1,43 @@
+<h2>Profile Page</h2>
+
+
+<% for(var i = 0; i < searchTerm.length; i++){ %>
+  <div>
+  <p>
+    <%= searchTerm[i].dataValues.searchTerm %>
+  </p>
+  <p>
+    <a href= "/index/<%= searchTerm[i].dataValues.searchTerm %>" class='deleteLink'>
+    <span class="bigRed">X</span> 
+    </a>
+  </p>
+  <hr>
+</div>
+      
+<%}%>
+<h2>Change your Search History</h2>
+
+<div>
+  <% for(var i = 0; i < searchTerm.length; i++){ %>
+    <form id="<%= searchTerm[i].dataValues.searchTerm %>" action="/profile/form" method = "post" name="form">
+      
+      <input type="text" name="name" id="name" class="form-control" value="<%=searchTerm[i].dataValues.searchTerm %>">
+      
+      <input type="submit" class="btn btn-primary put-form" value="Change dat search word dawg">
+    </form>
+  <%}%>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

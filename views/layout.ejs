@@ -7,6 +7,7 @@
 
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
     <div class="container">
@@ -30,25 +31,23 @@
       <%}%>
 
       <!-- LAYOUT DESIGN -->
-      <div class=".greyDiv">
-        <h1>Civil Civics</h1>
-        <div class="col-md-6">
-          <a href="/" class="btn btn-default">Search</a>
-        </div>
-        <div class="col-md-6">
-          <% if (!currentUser) { %>
-            <a href="/auth/signup" class="btn btn-info">Signup</a>
-            <a href="/auth/login" class="btn btn-info">Login</a>
-            <% } %>
-            <% if (currentUser) { %>
-            <a href="/auth/logout" class="btn btn-info">Logout</a>
-            <a href="/profile" class="btn btn-info"> 
-            <% if (currentUser) { %>
-          <strong><%- userName %> </strong>
+      <h1 class="greyDiv">Civil Civics</h1>
+      <div class="col-md-6 greyDiv">
+        <a href="/" class="btn btn-default">Search</a>
+      </div>
+      <div class="col-md-6 greyDiv">
+        <% if (!currentUser) { %>
+          <a href="/auth/signup" class="btn btn-info">Signup</a>
+          <a href="/auth/login" class="btn btn-info">Login</a>
+          <% } %>
+        <% if (currentUser) { %>
+          <a href="/auth/logout" class="btn btn-info">Logout</a>
+          <a href="/profile" class="btn btn-info"> 
+          <% if (currentUser) { %>
+            <strong><%- userName %> </strong>
           <% } %>
           's Profile</a>
-            <% } %>
-        </div>
+        <% } %>
       </div>
       
       <%- body %>
@@ -56,5 +55,6 @@
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/ajax.js"></script>
   </body>
 </html>
